@@ -3,13 +3,24 @@ server:
   port: 8081
   
 spring:
+  application:
+    name: 'fornecedor'
   jpa:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect  
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/fornecedor
+    url: jdbcd:mysql://${MYSQL_HOST:localhost}:3306/fornecedor
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: "12345678"
 #spring.jpa.show-sql: true  
+
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    
