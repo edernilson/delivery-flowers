@@ -3,10 +3,12 @@ server:
   port: 8888
 
 spring:
-  profiles:
-    active: native
+  application:
+    name: config-server
   cloud:
     config:
       server:
-        native:
-          search-locations: /dados/bootcamps/curso-alura/microservice-config-repo
+        git:
+          default-label: main
+          uri: https://github.com/edernilson/microservice-config-repo.git
+          search-paths: delivery-flowers/fornecedor
