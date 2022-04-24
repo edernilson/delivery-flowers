@@ -8,10 +8,12 @@ import com.edernilson.microservice.loja.controller.dto.InfoFornecedorDTO;
 import com.edernilson.microservice.loja.dto.InfoPedidoDTO;
 import com.edernilson.microservice.loja.model.Compra;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Service
 public class CompraService {
 	
-
 	private final FornecedorClient fornecedorClient;
 	
 	public CompraService(FornecedorClient fornecedorClient) {
@@ -19,17 +21,18 @@ public class CompraService {
 	}
 
 	public Compra realizarCompra(CompraDTO compra) {
-		InfoFornecedorDTO info = fornecedorClient.getInforPorEstado(compra.getEndereco().getEstado());
+		String estado = compra.getEndereco().getEstado();
+		log.info("Buscando informacoes do fornecedor de {}", estado);
+		InfoFornecedorDTO info = fornecedorClient.getInforPorEstado(estado);
 		
+		log.info("Realizando um pedido", estado);		
 		InfoPedidoDTO pedido = fornecedorClient.realizaPedido(compra.getItens());
 		
-		System.out.println(info.getEndereco());
-
 		Compra compraSalva = new Compra();
 		compraSalva.setPedidoId(pedido.getId());
 		compraSalva.setTempoDePreparo(pedido.getTempoDePreparo());
 		compraSalva.setEnderecoDestino(compra.getEndereco().toString());
-	
+
 		return compraSalva;	
 	}
 

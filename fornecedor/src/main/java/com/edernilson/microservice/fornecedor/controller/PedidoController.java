@@ -13,6 +13,9 @@ import com.edernilson.microservice.fornecedor.dto.ItemDoPedidoDTO;
 import com.edernilson.microservice.fornecedor.model.Pedido;
 import com.edernilson.microservice.fornecedor.service.PedidoService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestController
 @RequestMapping("/pedido")
 public class PedidoController {
@@ -25,6 +28,7 @@ public class PedidoController {
 
 	@PostMapping
 	public Pedido realizaPedido(@RequestBody List<ItemDoPedidoDTO> produtos) {
+		log.info("Pedido recebido");
 		return pedidoService.realizaPedido(produtos);
 	}
 
