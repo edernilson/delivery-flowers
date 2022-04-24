@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: 'fornecedor'
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://${CONFIG_SERVER_HOST:localhost}:8888
