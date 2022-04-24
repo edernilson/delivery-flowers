@@ -11,10 +11,16 @@ import com.edernilson.microservice.loja.controller.dto.InfoFornecedorDTO;
 @Service
 public class CompraService {
 
+	private final RestTemplate client;
+
+	public CompraService(RestTemplate client) {
+		this.client = client;
+	}
+
 	public void realizarCompra(CompraDTO compra) {
 
-		RestTemplate client = new RestTemplate();
-		ResponseEntity<InfoFornecedorDTO> exchange = client.exchange("http://fornecedor/info/" + compra.getEndereco().getEstado(), HttpMethod.GET, null,
+		ResponseEntity<InfoFornecedorDTO> exchange = client.exchange(
+				"http://fornecedor/info/" + compra.getEndereco().getEstado(), HttpMethod.GET, null,
 				InfoFornecedorDTO.class);
 		System.out.println(exchange.getBody().getEndereco());
 	}
