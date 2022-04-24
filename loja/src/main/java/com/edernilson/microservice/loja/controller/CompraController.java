@@ -1,11 +1,12 @@
 package com.edernilson.microservice.loja.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edernilson.microservice.loja.controller.dto.CompraDTO;
+import com.edernilson.microservice.loja.model.Compra;
 import com.edernilson.microservice.loja.service.CompraService;
 
 @RestController
@@ -18,9 +19,9 @@ public class CompraController {
 		this.compraService = compraService;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public void realizaCompra(@RequestBody CompraDTO compra) {
-		compraService.realizarCompra(compra);
+	@PostMapping
+	public Compra realizaCompra(@RequestBody CompraDTO compra) {
+		return compraService.realizarCompra(compra);
 	}
 
 }
