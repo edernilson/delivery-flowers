@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.edernilson.microservice.fornecedor</groupId>
 	<artifactId>fornecedor</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>fornecedor</name>
 	<description>Fornecedor</description>
 	<properties>

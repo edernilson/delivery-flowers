@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.edernilson.microservice.loja</groupId>
 	<artifactId>loja</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>loja</name>
 	<description>Loja</description>
 	<properties>

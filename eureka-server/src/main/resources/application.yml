@@ -6,3 +6,17 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+    
+spring:
+  application:
+    name: eureka-server
+  banner:
+    location: classpath:banner.txt    
+  output:
+    ansi:
+      enabled: always
+
+info:
+  app:
+    name: '@project.artifactId@'
+    version: '@project.version@'    

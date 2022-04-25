@@ -9,3 +9,16 @@ eureka:
     service-url:
       defaultZone: http://${EUREKA_SERVER_HOST:localhost}:8761/eureka
     
+spring:
+  application:
+    name: fornecedor
+  banner:
+    location: classpath:banner.txt    
+  output:
+    ansi:
+      enabled: always
+
+info:
+  app:
+    name: '@project.artifactId@'
+    version: '@project.version@'        
